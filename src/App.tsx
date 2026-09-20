@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-const thiefImg = "https://cdn-icons-png.flaticon.com/512/1068/1068694.png";
-const evilCursorImg = "https://cdn-icons-png.flaticon.com/512/179/179412.png";
+import thiefImg from "./assets/thief.png";
+import evilCursorImg from "./assets/evil-cursor.png";
+
 /* ------------------------------------------------------------------ */
 /* Datos                                                               */
 /* ------------------------------------------------------------------ */
