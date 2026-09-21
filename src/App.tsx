@@ -161,7 +161,7 @@ function EvilSwarm({ mouse }: { mouse: React.RefObject<{ x: number; y: number }>
         while (container.childElementCount < list.length) {
           const el = document.createElement("div");
           el.style.cssText =
-              "position:fixed;width:28px;height:28px;pointer-events:none;z-index:9998;background-size:contain;background-repeat:no-repeat;";
+              "position:fixed;top:0;left:0;width:28px;height:28px;pointer-events:none;z-index:9998;background-size:contain;background-repeat:no-repeat;";
           el.style.backgroundImage = `url(${evilCursorImg})`;
           container.appendChild(el);
         }
