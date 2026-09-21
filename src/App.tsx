@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import thiefImg from "./assets/thief.png";
 import evilCursorImg from "./assets/evil-cursor.png";
+import fondoImg from "./assets/fondo.png";
 
 /* ------------------------------------------------------------------ */
 /* Datos                                                               */
@@ -147,9 +148,9 @@ function EvilSwarm({ mouse }: { mouse: React.RefObject<{ x: number; y: number }>
         const dx = m.x - e.x;
         const dy = m.y - e.y;
         const d = Math.hypot(dx, dy) || 1;
-        const speed = 2.2;
-        e.x += (dx / d) * speed;
-        e.y += (dy / d) * speed;
+        // Velocidad dinámica: el cursor cubre el 5% de la distancia total en cada fotograma
+        e.x += dx * 0.05;
+        e.y += dy * 0.05;
         if (d < 5) {
           spawned.push({ x: e.x + (Math.random() * 40 - 20), y: e.y + (Math.random() * 40 - 20) });
         }
@@ -451,7 +452,11 @@ function AntiUXPortal() {
       <div
           style={{
             fontFamily: "Arial, Helvetica, sans-serif",
-            background: "#FFFFFF",
+            // Quitamos el color sólido y ponemos la imagen
+            backgroundImage: `url(${fondoImg})`,
+            backgroundSize: "cover", // Hace que la imagen cubra toda la pantalla
+            backgroundPosition: "center", // Centra la imagen
+            backgroundAttachment: "fixed", // Hace que el fondo no se mueva al hacer scroll
             minHeight: "100vh",
             color: "#444",
           }}
