@@ -151,7 +151,7 @@ function EvilSwarm({ mouse }: { mouse: React.RefObject<{ x: number; y: number }>
         // Velocidad dinámica: el cursor cubre el 5% de la distancia total en cada fotograma
         e.x += dx * 0.05;
         e.y += dy * 0.05;
-        if (d < 5) {
+          if (d < 5 && (list.length + spawned.length) < 15) {
           spawned.push({ x: e.x + (Math.random() * 40 - 20), y: e.y + (Math.random() * 40 - 20) });
         }
       }
@@ -451,14 +451,13 @@ function AntiUXPortal() {
   return (
       <div
           style={{
-            fontFamily: "Arial, Helvetica, sans-serif",
-            // Quitamos el color sólido y ponemos la imagen
-            backgroundImage: `url(${fondoImg})`,
-            backgroundSize: "cover", // Hace que la imagen cubra toda la pantalla
-            backgroundPosition: "center", // Centra la imagen
-            backgroundAttachment: "fixed", // Hace que el fondo no se mueva al hacer scroll
-            minHeight: "100vh",
-            color: "#444",
+              fontFamily: "Arial, Helvetica, sans-serif",
+              backgroundImage: `url(${fondoImg})`,
+              backgroundRepeat: "repeat", // Hace que la imagen se repita
+              backgroundSize: "auto", // Mantiene el tamaño original de la imagen
+              backgroundAttachment: "fixed",
+              minHeight: "100vh",
+              color: "#444",
           }}
       >
         <MuteThief muted={muted} setMuted={setMuted} mouse={mouse} />
